@@ -53,7 +53,7 @@ export class OracleCloudApi {
     protected readonly config: Config;
     public readonly tenancyList: OracleConfig[];
 
-    public constructor(
+    protected constructor(
         logger: Logger,
         config: Config,
         tenancyList: OracleConfig[],
@@ -208,6 +208,25 @@ export class OracleCloudApi {
         const configProfile = configuration.accumulator.configurationsByProfile.get(profile);
 
         return configProfile;
+    }
+
+    /**
+     * Read profile details based on tenancy name
+     * Gets the config file path and default profile for tenancy
+     * and passes that to {@link getProfileConfig} for Profile details map
+     * @param tenancyName - Name of the tenancy 
+     * @param profile - Profile to be used
+     * @returns Profile details Map to read the configurations
+     */
+    public async getProfileConfigFromTenancy(
+        tenancyName?: string,
+        profile?: string,
+    ): Promise<Map<string, string> | undefined>{
+        const tenancyConfiguration = await this.getTenancyConfiguration(tenancyName);
+        const requiredProfileName = profile ? profile : tenancyConfiguration.defaultProfile;
+        const tenancyProfileConfig = (await this.getProfileConfig(tenancyConfiguration.configurationFilePath, requiredProfileName))!;
+
+        return tenancyProfileConfig;
     }
 
     /**

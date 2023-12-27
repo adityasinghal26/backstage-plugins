@@ -16,3 +16,4 @@
 
 export * from './OracleCloudApi';
 export * from './IdentityApi';
+export * from './ArtifactsApi';
