@@ -16,3 +16,4 @@
 
 export * from './GithubCodespaceEntityTable';
 export * from './GithubCodespaceEntityContent';
+export * from './GithubCodespaceEntityRepoContent';

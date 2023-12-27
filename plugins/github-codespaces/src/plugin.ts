@@ -35,6 +35,15 @@ export const EntityGithubCodespacesContent = githubCodespacesPlugin.provide(
   }),
 );
 
+export const EntityGithubCodespacesRepoContent = githubCodespacesPlugin.provide(
+  createRoutableExtension({
+    name: 'EntityGithubCodespacesRepoContent',
+    component: () => 
+      import('./components/GithubCodespacesEntityContent').then(m => m.GithubCodespaceEntityRepoContent),
+    mountPoint: rootRouteRef,
+  }),
+);
+
 export const GithubCodespacesPageList = githubCodespacesPlugin.provide(
   createRoutableExtension({
     name: 'GithubCodespacesPageList',
