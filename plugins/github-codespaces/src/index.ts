@@ -7,3 +7,7 @@ export {
     EntityGithubCodespacesCard, 
     EntityGithubCodespacesWidget 
 } from './plugin';
+export {
+    isGithubCodespacesAvailable,
+    isGithubCodespacesAvailable as isPluginApplicableToEntity,
+  } from './components/utils';

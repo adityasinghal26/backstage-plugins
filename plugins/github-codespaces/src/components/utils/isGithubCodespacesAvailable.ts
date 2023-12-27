@@ -14,8 +14,13 @@
  * limitations under the License.
  */
 
-export * from './getProjectNameFromEntity';
-export * from './getBooleanIndicator';
-export * from './getCodespaceState';
-export * from './getGitStatusView';
-export * from './isGithubCodespacesAvailable';
+import { Entity } from "@backstage/catalog-model";
+import { GITHUB_CODESPACES_ANNOTATION } from "./getProjectNameFromEntity";
+
+/**
+ * Check whether the Github Codespace annotation exists in the entity annotations
+ * @param entity - Entity object
+ * @returns the value of the project slug in the entity defintion annotations
+ */
+export const isGithubCodespacesAvailable = (entity: Entity) =>
+  Boolean(entity.metadata.annotations?.[GITHUB_CODESPACES_ANNOTATION]);
