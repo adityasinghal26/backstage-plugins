@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   gridItemCard: {
     display: 'flex',
     flexDirection: 'column',
-    height: 'calc(100% - 10px)', // for pages without content header
+    height: '8vw',
     marginBottom: '10px',
   },
   fullHeightCard: {
