@@ -52,3 +52,12 @@ export const EntityGithubCodespacesCard = githubCodespacesPlugin.provide(
     mountPoint: rootRouteRef,
   })
 )
+
+export const EntityGithubCodespacesWidget = githubCodespacesPlugin.provide(
+  createRoutableExtension({
+    name: 'EntityGithubCodespacesWidget',
+    component: () => 
+      import('./components/GithubCodespacesEntityCard').then(m => m.GithubCodespacesWidgetCard),
+    mountPoint: rootRouteRef,
+  })
+)

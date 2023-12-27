@@ -16,3 +16,4 @@
 
 export * from './GithubCodespacesEntityCard';
 export * from './GithubCodespaceEntityTable';
+export * from './GithubCodespacesWidgetCard';
