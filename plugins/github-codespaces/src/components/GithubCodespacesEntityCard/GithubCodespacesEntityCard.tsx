@@ -44,7 +44,7 @@ const useStyles = makeStyles({
 
 
 /**
- * A Backstage Card to create/start the Codespaces for the Authenticated User
+ * A Backstage Overview Card to create/start and list the Codespaces for the Authenticated User
  * dedicated for the particular entity (with the same display name) 
  * 
  * @public
