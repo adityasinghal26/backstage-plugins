@@ -22,6 +22,15 @@ import { Codespace } from "../../api";
 import { booleanIndicator, codespaceState, getGitStatusView } from "../utils";
 import { DateTime } from "luxon";
 
+/**
+ * Create an array of columns with following details
+ * - Name of the Codespace
+ * - Branch of the Codespace
+ * - Uncommitted changes (present/absent)
+ * - Ahead/Behind (number of commits against reference branch)
+ * - Current Codespace state
+ * - Age of the Codespace
+ */
 const columns: TableColumn[] = [
     {
         title: 'Codespace',
@@ -68,13 +77,33 @@ const columns: TableColumn[] = [
         ? DateTime.fromISO(row.created_at)
         : DateTime.now()
       ).toRelative(),
+      // change codespace created timestamp to a relative value
     }
 ];
 
+/**
+ * Properties required for the Github Codespace Entity Repository view table
+ */
 type GithubCodespaceEntityTableProps = {
+
+    /**
+     * Number of Codespaces filtered for the Entity
+     */
     count?: number;
+
+    /**
+     * List of filtered Codespaces with all the details
+     */
     list?: RestEndpointMethodTypes['codespaces']['listInRepositoryForAuthenticatedUser']['response']['data']['codespaces'];
+
+    /**
+     * Loading status of the React Hook
+     */
     loading: boolean;
+
+    /**
+     * Error details of the React Hook
+     */
     error?: Error;
 }
 

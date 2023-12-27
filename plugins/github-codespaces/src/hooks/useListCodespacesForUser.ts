@@ -19,6 +19,11 @@ import { useApi } from "@backstage/core-plugin-api";
 import { RestEndpointMethodTypes } from "@octokit/rest";
 import useAsync from "react-use/lib/useAsync";
 
+/**
+ * React hook to list all the codespaces for the Authenticated User
+ * 
+ * @returns the list and details of all the codespaces
+ */
 export function useListCodespacesForUser(): {
     count?: RestEndpointMethodTypes['codespaces']['listForAuthenticatedUser']['response']['data']['total_count'];
     data?: RestEndpointMethodTypes['codespaces']['listForAuthenticatedUser']['response']['data']['codespaces'];
@@ -27,6 +32,8 @@ export function useListCodespacesForUser(): {
 } {
     const api = useApi(githubCodespacesApiRef);
 
+    // trigger an async API call to get the list of codespaces
+    // for the authenticated user
     const { value, loading, error } = useAsync(() => {
             return api.listCodespacesForUser();
     }, [api]);

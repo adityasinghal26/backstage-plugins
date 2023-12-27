@@ -21,6 +21,12 @@ import { Box } from "@material-ui/core";
 import { Codespace } from "../../api";
 import { booleanIndicator } from "../utils";
 
+/**
+ * Create an array of columns with following details
+ * - Name of the Codespace
+ * - Branch of the Codespace
+ * - Uncommitted changes (present/absent)
+ */
 const columns: TableColumn[] = [
     {
         title: 'Name',
@@ -43,10 +49,29 @@ const columns: TableColumn[] = [
     }
 ];
 
+/**
+ * Properties required for the Github Codespace Entity overview table
+ */
 type GithubCodespaceEntityTableProps = {
+
+    /**
+     * Number of Codespaces filtered for the Entity
+     */
     count?: number;
+
+    /**
+     * List of filtered Codespaces with all the details
+     */
     list?: RestEndpointMethodTypes['codespaces']['listInRepositoryForAuthenticatedUser']['response']['data']['codespaces'];
+
+    /**
+     * Loading status of the React Hook
+     */
     loading: boolean;
+
+    /**
+     * Error details of the React Hook
+     */
     error?: Error;
 }
 
@@ -65,7 +90,9 @@ export const GithubCodespaceEntityTable = ({ count, list, loading, error}: Githu
             columns={columns}
             options={{
                 search: false,
+                // no filtering required since it will be small list
                 paging: true,
+                // create a small page with size of 3 rows and options [3, 5, 8]
                 pageSize: 3,
                 pageSizeOptions: [3, 5, 8],
                 showTitle: true,
@@ -73,8 +100,6 @@ export const GithubCodespaceEntityTable = ({ count, list, loading, error}: Githu
             }}
             title={
                 <Box display="flex" alignItems="center" fontSize={24}>
-                    {/* <GitHubIcon/> */}
-                    {/* <Box mr={1} /> */}
                     Codespace Details - Count ({count})
                 </Box>
             }

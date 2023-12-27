@@ -21,6 +21,12 @@ import { RestEndpointMethodTypes } from "@octokit/rest";
 import useAsync from "react-use/lib/useAsync";
 import { getProjectNameFromEntity } from "../components/utils";
 
+/**
+ * React hook to list all the codespaces for the Authenticated User
+ * belonging to a particular repository as configured in the entity annotations
+ * 
+ * @returns the list and details of all the codespaces filtered for the project slug
+ */
 export function useListCodespacesInRepoForUser(
     entity: Entity,
 ): {
@@ -31,6 +37,8 @@ export function useListCodespacesInRepoForUser(
 } {
     const api = useApi(githubCodespacesApiRef);
 
+    // Get the repository owner and name from the project-slug
+    // and filter the codespaces for the Authenticated User
     const { value, loading, error } = useAsync(() => {
         const projectName = getProjectNameFromEntity(entity);
         const [owner, repository_name] = (projectName ?? '/').split('/');

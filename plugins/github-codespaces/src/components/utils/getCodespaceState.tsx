@@ -18,6 +18,12 @@ import { StatusAborted, StatusError, StatusOK, StatusPending, StatusRunning, Sta
 import React from "react";
 import { CodespaceState } from "../../api";
 
+/**
+ * Method to create an indicator that gives -
+ * colored dot paired with Codespace state text
+ * @param props - Properties with the Codespace state
+ * @returns a dot icon with the Codespace state text
+ */
 export const codespaceState = (props: {
   status?: CodespaceState;
 }) => {
@@ -29,6 +35,11 @@ export const codespaceState = (props: {
   );
 };
 
+/**
+ * Gives a dot icon on different Codespace states
+ * @param status for Codespace state  
+ * @returns a colored indicator for the state
+ */
 export function StateIcon({
   status,
 }: {
@@ -92,6 +103,11 @@ export function StateIcon({
   }
 }
 
+/**
+   * Gives the text output on different Codespace state
+   * @param status for Codespace state 
+   * @returns a text with the Codespace state
+   */
 export function getStateDescription({
   status,
 }: {

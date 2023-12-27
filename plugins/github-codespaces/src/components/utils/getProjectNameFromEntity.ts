@@ -17,9 +17,15 @@
 import { Entity } from "@backstage/catalog-model";
 
 /**
+ * Annotation required for the Github Codespaces
  *  @public
  */
 export const GITHUB_CODESPACES_ANNOTATION = 'github.com/project-slug';
 
+/**
+ * Get the project name from the entity annotations
+ * @param entity - Entity object
+ * @returns the value of the project slug in the entity defintion annotations
+ */
 export const getProjectNameFromEntity = (entity: Entity) => 
     entity?.metadata.annotations?.[GITHUB_CODESPACES_ANNOTATION] ?? '';

@@ -21,6 +21,13 @@ import { RestEndpointMethodTypes } from "@octokit/rest";
 import useAsync from "react-use/lib/useAsync";
 import { getProjectNameFromEntity } from "../components/utils";
 
+/**
+ * React hook to list all the codespaces for the Authenticated User
+ * belonging to the repository configured in the entity annotations
+ * and with the entity name as a substring of the Codespace display name
+ * 
+ * @returns the list and details of all the codespaces
+ */
 export function useListCodespaceswithEntityForUser(
     entity: Entity,
 ): {
@@ -32,16 +39,21 @@ export function useListCodespaceswithEntityForUser(
     const api = useApi(githubCodespacesApiRef);
     const entity_name = entity.metadata.name;
 
+    // Get the repository owner and name from the project-slug
+    // and filter the codespaces for the Authenticated User
     const { value, loading, error } = useAsync(() => {
         const projectName = getProjectNameFromEntity(entity);
         const [owner, repository_name] = (projectName ?? '/').split('/');
         return api.listCodespacesInRepoForUser(owner, repository_name);
     }, [api]);
 
+    // Verify whether the codespace list contains
+    // any codespace which has a substring with entity name
     const verifyCodespaceNameWithEntity = (entityName: string, codespaceName: any) => {
         return (codespaceName.toLowerCase().indexOf(entityName.toLowerCase()) >= 0);
     }
 
+    // Create a list of codespaces filtered for the entity name and repository
     const verifiedCodespaces = value?.codespaces.filter((codespace) =>
         verifyCodespaceNameWithEntity(entity_name, codespace.display_name)
     )

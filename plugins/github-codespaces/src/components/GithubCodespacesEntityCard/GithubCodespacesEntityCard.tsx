@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-// import { useListCodespacesForUser } from "../../hooks";
 import React from "react";
 import { useEntity } from "@backstage/plugin-catalog-react";
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
@@ -54,9 +53,11 @@ export const GithubCodespacesEntityCard = () => {
   const { entity } = useEntity();
   const classes = useStyles();
   
+  // React callback function to open the entity in Github Codespace
   const { startCodespace } = useOpenCodespaceInEntityForUser(entity);
   const { count, data, loading, error } = useListCodespaceswithEntityForUser(entity);
 
+  // method to open the URL in a new tab
   const openInNewTab = (url: string) => {
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
     if (newWindow) newWindow.opener = null
@@ -86,11 +87,5 @@ export const GithubCodespacesEntityCard = () => {
         <GithubCodespaceEntityTable count={count} list={data} loading={loading} error={error} />
       </CardContent>
     </Card>
-    // <Box display="flex" alignItems="center" justifyContent="center" mb={1}>
-    //   <GitHubIcon/>
-    //   <Box ml={1} className={classes.subtitles}>
-    //     <Typography variant="subtitle2">{name}</Typography>
-    //   </Box>
-    // </Box>
   );
 }

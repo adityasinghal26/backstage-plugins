@@ -21,7 +21,8 @@ import { readGithubIntegrationConfigs } from "@backstage/integration";
 // import { UsePaginationProps } from '@material-ui/lab';
 
 /**
- * A client for fetching information for Github Codespaces implementing githubCodespacesApiRef
+ * An API client for fetching information about
+ * Github Codespaces implementing githubCodespacesApiRef
  * 
  * @public
  */
@@ -36,21 +37,17 @@ export class GithubCodespacesApiClient implements GithubCodespacesApi {
     }
 
     private async getOctokit(hostname: string = 'github.com'): Promise<Octokit> {
-        // const { token } = await this.scmAuthApi.getCredentials({
-        //   url: `https://${hostname}/`,
-        //   additionalScope: {
-        //     customScopes: {
-        //       github: ['repo'],
-        //     },
-        //   },
-        // });
         const auth = this.githubAuthApi;
+
+        // Get the configuration and baseUrl for Github Hostname 
+        // provided as an argument to the method
         const configs = readGithubIntegrationConfigs(
           this.configApi.getOptionalConfigArray('integrations.github') ?? [],
         );
         const githubIntegrationConfig = configs.find(v => v.host === hostname);
         const baseUrl = githubIntegrationConfig?.apiBaseUrl;
 
+        // Get a token with required permissions for Codespace
         const token = await auth.getAccessToken(['repo','codespace'])
         return new Octokit({ auth: token, baseUrl });
       }
