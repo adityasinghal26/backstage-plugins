@@ -36,6 +36,16 @@ export async function createRouter(
     )
   });
 
+  router.get('/identity/tenancy/compartments', async(request, response) => {
+    logger.info(`Getting compartment list`);
+    const tenancyName = request.query.tenancyName as string;
+    const profile = request.query.profile as string;
+    const compartmentName = request.query.compartmentName as string;
+    response.status(200).json(
+      await identityApi.getCompartmentsInTenancy(tenancyName, profile, compartmentName)
+    )
+  });
+
   router.get('/identity/tenancy/compartment', async(request, response) => {
     logger.info(`Getting compartment details`);
     const tenancyName = request.query.tenancyName as string;
