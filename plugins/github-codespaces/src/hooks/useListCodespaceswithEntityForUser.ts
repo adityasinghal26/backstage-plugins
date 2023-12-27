@@ -19,7 +19,7 @@ import { githubCodespacesApiRef } from "../api";
 import { useApi } from "@backstage/core-plugin-api";
 import { RestEndpointMethodTypes } from "@octokit/rest";
 import useAsync from "react-use/lib/useAsync";
-import { getProjectNameFromEntity } from "../components/utils";
+import { getProjectNameFromEntity } from "../utils";
 
 /**
  * React hook to list all the codespaces for the Authenticated User

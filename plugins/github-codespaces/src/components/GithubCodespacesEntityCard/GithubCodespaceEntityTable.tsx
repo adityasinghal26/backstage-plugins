@@ -19,7 +19,7 @@ import { RestEndpointMethodTypes } from "@octokit/rest";
 import React from "react";
 import { Box } from "@material-ui/core";
 import { Codespace } from "../../api";
-import { booleanIndicator } from "../utils";
+import { booleanIndicator } from "../../utils";
 
 /**
  * Create an array of columns with following details

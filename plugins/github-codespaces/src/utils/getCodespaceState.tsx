@@ -16,7 +16,7 @@
 
 import { StatusAborted, StatusError, StatusOK, StatusPending, StatusRunning, StatusWarning } from "@backstage/core-components";
 import React from "react";
-import { CodespaceState } from "../../api";
+import { CodespaceState } from "../api";
 
 /**
  * Method to create an indicator that gives -

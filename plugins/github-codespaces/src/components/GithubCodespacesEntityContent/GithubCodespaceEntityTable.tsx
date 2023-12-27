@@ -19,7 +19,7 @@ import { RestEndpointMethodTypes } from "@octokit/rest";
 import React from "react";
 import { Box } from "@material-ui/core";
 import { Codespace } from "../../api";
-import { booleanIndicator, codespaceState, getGitStatusView } from "../utils";
+import { booleanIndicator, codespaceState, getGitStatusView } from "../../utils";
 import { DateTime } from "luxon";
 
 /**

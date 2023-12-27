@@ -17,7 +17,7 @@
 import { Entity } from "@backstage/catalog-model";
 import { githubCodespacesApiRef } from "../api"; 
 import { useApi } from "@backstage/core-plugin-api";
-import { getProjectNameFromEntity } from "../components/utils";
+import { getProjectNameFromEntity } from "../utils";
 import { useCallback } from "react";
 
 /**
