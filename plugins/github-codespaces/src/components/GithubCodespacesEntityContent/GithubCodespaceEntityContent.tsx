@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-import { useListCodespacesInRepoForUser } from "../../hooks";
+import { useListCodespaceswithEntityForUser } from "../../hooks";
 import { GithubCodespaceEntityTable } from "./GithubCodespaceEntityTable";
 import { useEntity } from "@backstage/plugin-catalog-react";
 import React from "react";
 
 /**
- * A Backstage Tab Content to list the Codespaces for the Authenticated User 
- * in GitHub repository with annotation 'github.com/project-slug'
+ * A Backstage Entity Content to list the Codespaces for the Authenticated User
+ * filtered for the particular entity (with the same display name) 
  * 
  * @public
- */ 
+ */
 export const GithubCodespaceEntityContent = () => {
     const { entity } = useEntity();
-    const { count, data, loading, error } = useListCodespacesInRepoForUser(entity);
+    const { count, data, loading, error } = useListCodespaceswithEntityForUser(entity);
 
     return <GithubCodespaceEntityTable count={count} list={data} loading={loading} error={error} />;
 }
