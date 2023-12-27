@@ -10,4 +10,4 @@ export {
 export {
     isGithubCodespacesAvailable,
     isGithubCodespacesAvailable as isPluginApplicableToEntity,
-  } from './components/utils';
+  } from './utils';
