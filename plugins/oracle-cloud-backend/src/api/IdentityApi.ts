@@ -82,9 +82,7 @@ export class IdentityApi extends OracleCloudApi {
         );
 
         const apiClient = this.getIdentityClient(tenancyName, profile);
-        const tenancyConfiguration = await super.getTenancyConfiguration(tenancyName);
-        const requiredProfileName = profile ? profile : tenancyConfiguration.defaultProfile;
-        const tenancyProfileConfig = (await super.getProfileConfig(tenancyConfiguration.configurationFilePath, requiredProfileName))!;
+        const tenancyProfileConfig = (await super.getProfileConfigFromTenancy(tenancyName, profile))!;
         const response = await ((await apiClient).getTenancy({
             tenancyId: (tenancyProfileConfig.get("tenancy"))!,
         }));
