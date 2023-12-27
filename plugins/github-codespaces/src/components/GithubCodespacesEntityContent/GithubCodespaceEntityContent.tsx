@@ -29,5 +29,5 @@ export const GithubCodespaceEntityContent = () => {
     const { entity } = useEntity();
     const { count, data, loading, error } = useListCodespaceswithEntityForUser(entity);
 
-    return <GithubCodespaceEntityTable count={count} list={data} loading={loading} error={error} />;
+    return <GithubCodespaceEntityTable type="Entity" count={count} list={data} loading={loading} error={error} />;
 }

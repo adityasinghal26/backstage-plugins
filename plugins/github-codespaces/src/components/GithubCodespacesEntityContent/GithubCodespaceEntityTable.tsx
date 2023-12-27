@@ -87,6 +87,12 @@ const columns: TableColumn[] = [
 type GithubCodespaceEntityTableProps = {
 
     /**
+     * Add the type of table to be added in Table Title
+     * example - Entity table or Repo table
+     */
+    type?: string,
+
+    /**
      * Number of Codespaces filtered for the Entity
      */
     count?: number;
@@ -107,7 +113,7 @@ type GithubCodespaceEntityTableProps = {
     error?: Error;
 }
 
-export const GithubCodespaceEntityTable = ({ count, list, loading, error}: GithubCodespaceEntityTableProps) => {
+export const GithubCodespaceEntityTable = ({ type, count, list, loading, error}: GithubCodespaceEntityTableProps) => {
     if (error) {
         return (
             <div>
@@ -130,7 +136,7 @@ export const GithubCodespaceEntityTable = ({ count, list, loading, error}: Githu
                 <Box display="flex" alignItems="center">
                     <GitHubIcon/>
                     <Box mr={1} />
-                    Github Codespaces (In Repo) - List ({count})
+                    Github Codespaces (In {type}) - List ({count})
                 </Box>
             }
             data={list ?? []}
