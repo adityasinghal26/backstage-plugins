@@ -6,23 +6,23 @@ Website: [https://github.com/codespaces](https://github.com/codespaces)
 
 1. GitHub Codespaces Menu
 
-![](.\images\GithubCodespacesPage.png)
+![GitHub Codespaces](.\images\GithubCodespacesPage.png)
 
 2. Start Codespaces Widget 
 
-![](.\images\EntityGithubCodespacesWidget.png)
+![Start Codespaces](.\images\EntityGithubCodespacesWidget.png)
 
 3. Start and List Codespaces Card
 
-![](.\images\EntityGithubCodespacesCard.png)
+![Start and List Codespaces](.\images\EntityGithubCodespacesCard.png)
 
 4. List Codespaces Content (filtered for Entity)
 
-![](.\images\EntityGithubCodespacesContent.png)
+![List Codespaces Entity](.\images\EntityGithubCodespacesContent.png)
 
 5. List Codespaces Content (filtered for Project Repository)
 
-![](.\images\EntityGithubCodespacesRepoContent.png)
+![List Codespaces Repository](.\images\EntityGithubCodespacesRepoContent.png)
 
 ## Setup
 
