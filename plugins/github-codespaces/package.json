@@ -12,6 +12,11 @@
   "backstage": {
     "role": "frontend-plugin"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adityasinghal26/backstage-plugins",
+    "directory": "plugins/github-codespaces"
+  },
   "sideEffects": false,
   "scripts": {
     "start": "backstage-cli package start",
@@ -48,14 +53,13 @@
     "@testing-library/user-event": "^14.0.0",
     "msw": "^1.0.0"
   },
-  "files": [
-    "dist"
-  ],
-  "repository": "github:adityasinghal26/backstage-plugins",
   "keywords": [
     "backstage",
     "plugin",
     "github",
     "codespaces"
+  ],
+  "files": [
+    "dist"
   ]
 }
