@@ -1,28 +1,43 @@
 # GitHub Codespaces Plugin
 
+Interact with your GitHub Codespaces directly from Backstage platform. 
+
+GitHub Codespaces enable you to create a Devcontainer from your GitHub repository and get in Development mode right away. For more documentation, visit below documentation. You can also view your codespaces by following the website link below after logging in to GitHub.  
+
+Documentation: [https://docs.github.com/en/codespaces](https://docs.github.com/en/codespaces)
+
 Website: [https://github.com/codespaces](https://github.com/codespaces)
+
+## Features
+
+- Authenticate the user with Github (with 'repo' and 'codespace' permissions)
+- List all the codespaces for authenticated user
+- List codespaces in a project repository for authenticated user
+- List codespaces with display name as entity name for authenticated user
+- Create/Start a new codespace for an entity (with display name as entity name)
+- Pagination for codespaces
 
 ## Screenshots
 
 1. GitHub Codespaces Menu
 
-![GitHub Codespaces](.\images\GithubCodespacesPage.png)
+![GitHub Codespaces](./images/GithubCodespacesPage.png)
 
 2. Start Codespaces Widget 
 
-![Start Codespaces](.\images\EntityGithubCodespacesWidget.png)
+![Start Codespaces](./images/EntityGithubCodespacesWidget.png)
 
 3. Start and List Codespaces Card
 
-![Start and List Codespaces](.\images\EntityGithubCodespacesCard.png)
+![Start and List Codespaces](./images/EntityGithubCodespacesCard.png)
 
 4. List Codespaces Content (filtered for Entity)
 
-![List Codespaces Entity](.\images\EntityGithubCodespacesContent.png)
+![List Codespaces Entity](./images/EntityGithubCodespacesContent.png)
 
 5. List Codespaces Content (filtered for Project Repository)
 
-![List Codespaces Repository](.\images\EntityGithubCodespacesRepoContent.png)
+![List Codespaces Repository](./images/EntityGithubCodespacesRepoContent.png)
 
 ## Setup
 
@@ -194,15 +209,6 @@ integrations:
     - host: 'your-github-host.com'
       apiBaseUrl: 'https://api.your-github-host.com' 
 ```-->
-
-## Features
-
-- Authenticate the user with Github (with 'repo' and 'codespace' permissions)
-- List all the codespaces for authenticated user
-- List codespaces in a project repository for authenticated user
-- List codespaces with display name as entity name for authenticated user
-- Create/Start a new codespace for an entity (with display name as entity name)
-- Pagination for codespaces
 
 ## Limitations
 
