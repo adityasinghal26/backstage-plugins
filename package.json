@@ -30,6 +30,9 @@
       "plugins/*"
     ]
   },
+  "dependencies": {
+    "@changesets/cli": "^2.27.1"
+  },
   "devDependencies": {
     "@backstage/cli": "^0.25.0",
     "@backstage/e2e-test-utils": "^0.1.0",
