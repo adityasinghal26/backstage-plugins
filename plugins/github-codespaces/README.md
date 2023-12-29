@@ -208,3 +208,4 @@ integrations:
 
 - Any codespace started using EntityGithubCodespacesWidget or EntityGithubCodespacesCard action will create a new codespace with the exact same display name as the entity name.
 - Once the codespace is created, you can only start the Codespace from the Widget/Card action.
+- The plugin does not support GitHub Enterprise yet. The feature will be extended in the next releases.
