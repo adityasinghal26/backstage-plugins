@@ -18,7 +18,7 @@ import { Config } from "@backstage/config";
 import { Logger } from "winston";
 import * as artifacts from "oci-artifacts";
 import { OracleCloudApi, OracleConfig } from "./OracleCloudApi";
-import { ListContainerRepositoriesResponse } from "oci-artifacts/lib/response";
+import { ListContainerImagesResponse, ListContainerRepositoriesResponse } from "oci-artifacts/lib/response";
 import { IdentityApi } from "./IdentityApi";
 
 /**
@@ -110,5 +110,41 @@ export class ArtifactsApi extends OracleCloudApi {
         });
         return response;
     }
+
+    /**
+     * Fetch the list and the details of the container images present based on
+     * the compartment and repository name for a certain config file and profile
+     * @param compartmentName - Name of the compartment
+     * @param repositoryName - Name of the container repository
+     * @param tenancyName - Name of the tenancy
+     * @param profile - Profile to be used from the config file
+     * @returns an instance of {@link ListContainerImagesResponse} from Identity Responses
+     */
+    public async getContainerImagesInRepository(
+        compartmentName: string,
+        repositoryName: string,
+        tenancyName?: string,
+        profile?: string,
+    ): Promise<ListContainerImagesResponse> {
+        this.logger?.debug(
+            `Calling Oracle Cloud REST API, for getting images in ${compartmentName} container repository`,
+        );
+
+        if(!compartmentName || !repositoryName){
+            throw new Error(
+                `No compartment or repository name was provided in the query parameters.`
+            )
+        }
+
+        const apiClient = await this.getArtifactsClient(tenancyName, profile);
+        const compartmentDetails = await this.identityApi.getCompartmentDetailsInTenancy(compartmentName, tenancyName, profile);
+        const response = await apiClient.listContainerImages({
+            compartmentId: compartmentDetails.compartment.id,
+            repositoryName: repositoryName,
+        });
+
+        return response;
+    }
+
 
 }
