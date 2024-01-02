@@ -10,6 +10,28 @@ The plugin needs to be configured and then installed as per the steps in followi
 
 The Oracle Cloud plugin allows either single or multiple Oracle Cloud tenancies, allowing to trigger REST APIs with the tenancy and profile name. The tenancy name (tenancyName) and the profile name (profile) in the API query parameters is optional, which if not provided, will utilise the default tenancy and the profile in the configuration.
 
+#### Oracle Configuration File
+
+Below is a sample reference for Oracle configuration file. Here, the profile name is in square brackets '[]' and other details such as user ID, tenancy ID and region can be configured. You will also need to provide a path to your private PEM file for authentication.
+
+**Note:** It is advised to create one config file for each tenancy where different profiles such as DEFAULT, and test (in this example) can be configured with different users and regions.
+
+```
+[DEFAULT]
+user=ocid1.user.oc1..<your_unique_id>
+fingerprint=<your_fingerprint>
+tenancy=ocid1.tenancy.oc1..<your_unique_id>
+region=<your_region>
+key_file=~/.oci/oci_api_key.pem
+
+[test]
+user=ocid1.user.oc1..<your_unique_id_test>
+fingerprint=<your_fingerprint_test>
+tenancy=ocid1.tenancy.oc1..<your_unique_id>
+region=<your_region>
+key_file=~/.oci/oci_api_key.pem
+```
+
 #### Single Configuration
 
 ```yaml
