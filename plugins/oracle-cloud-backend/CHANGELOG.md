@@ -1,5 +1,11 @@
 # @adityasinghal26/plugin-oracle-cloud-backend
 
+## 0.2.1
+
+### Patch Changes
+
+- Add the API fix for listing container images using ArtifactsApi
+
 ## 0.2.0
 
 ### Minor Changes
