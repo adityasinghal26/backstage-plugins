@@ -1,0 +1,13 @@
+[DEFAULT]
+user=ocid1.user.oc1..<your_unique_id>
+fingerprint=<your_fingerprint>
+tenancy=ocid1.tenancy.oc1..<your_unique_id>
+region=<your_region>
+key_file=~/.oci/oci_api_key.pem
+
+[test]
+user=ocid1.user.oc1..<your_unique_id_test>
+fingerprint=<your_fingerprint_test>
+tenancy=ocid1.tenancy.oc1..<your_unique_id>
+region=<your_region>
+key_file=~/.oci/oci_api_key.pem
