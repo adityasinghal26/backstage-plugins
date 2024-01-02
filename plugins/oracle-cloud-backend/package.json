@@ -45,6 +45,14 @@
     "msw": "^1.0.0",
     "supertest": "^6.2.4"
   },
+  "keywords": [
+    "backstage",
+    "plugin",
+    "backend",
+    "oracle",
+    "oracle-cloud",
+    "oracle-cloud-infrastructure"
+  ],
   "files": [
     "dist",
     "config.d.ts",
