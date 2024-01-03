@@ -1,5 +1,12 @@
 # @adityasinghal26/plugin-oracle-cloud-backend
 
+## 0.3.0
+
+### Minor Changes
+
+- 6472616: feat: add REST API to create container repo
+- b064fbb: fix: update API endpoint to list container images
+
 ## 0.2.1
 
 ### Patch Changes
