@@ -77,6 +77,17 @@ export async function createRouter(
     )
   });
 
+  router.post('/artifacts/container/repository', async(request, response) => {
+    logger.info(`Create container repository in a compartment`);
+    const tenancyName = request.query.tenancyName as string;
+    const profile = request.query.profile as string;
+    const compartmentName = request.query.compartmentName as string;
+    const repositoryName = request.query.repositoryName as string;
+    response.status(200).json(
+      await artifactsApi.createContainerRepository(compartmentName, repositoryName, tenancyName, profile)
+    )
+  });
+
   router.use(errorHandler());
   return router;
 }

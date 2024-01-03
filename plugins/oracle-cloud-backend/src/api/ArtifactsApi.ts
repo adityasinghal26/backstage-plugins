@@ -18,7 +18,7 @@ import { Config } from "@backstage/config";
 import { Logger } from "winston";
 import * as artifacts from "oci-artifacts";
 import { OracleCloudApi, OracleConfig } from "./OracleCloudApi";
-import { ListContainerImagesResponse, ListContainerRepositoriesResponse } from "oci-artifacts/lib/response";
+import { CreateContainerRepositoryResponse, ListContainerImagesResponse, ListContainerRepositoriesResponse } from "oci-artifacts/lib/response";
 import { IdentityApi } from "./IdentityApi";
 
 /**
@@ -142,6 +142,46 @@ export class ArtifactsApi extends OracleCloudApi {
             compartmentId: compartmentDetails.compartment.id,
             repositoryName: repositoryName,
         });
+
+        return response;
+    }
+
+    /**
+     * Create a new container repository in a child compartment of Tenancy Root
+     * @param compartmentName - Name of the compartment 
+     * @param repositoryName - Name of the container repository
+     * @param tenancyName - Name of the tenancy
+     * @param profile - Profile to be used from the config file
+     * @returns 
+     */
+    public async createContainerRepository(
+        compartmentName: string,
+        repositoryName: string,
+        tenancyName?: string,
+        profile?: string,
+    ): Promise<CreateContainerRepositoryResponse> {
+        this.logger?.debug(
+            `Calling Oracle Cloud REST API, for creating repository in ${compartmentName}`,
+        );
+
+        if(!compartmentName || !repositoryName){
+            throw new Error(
+                `No compartment or repository name was provided in the query parameters.`
+            )
+        }
+
+        const apiClient = await this.getArtifactsClient(tenancyName, profile);
+        const compartmentDetails = await this.identityApi.getCompartmentDetailsInTenancy(compartmentName, tenancyName, profile);
+        const response = await apiClient.createContainerRepository({
+            createContainerRepositoryDetails: {
+                compartmentId: compartmentDetails.compartment.id,
+                displayName: repositoryName,
+                isImmutable: false,     
+                // Requirement is to set isImmutable as true, but that gives error as below:
+                // Setting isImmutable is not currently supported
+                isPublic: false
+            }
+        })
 
         return response;
     }
