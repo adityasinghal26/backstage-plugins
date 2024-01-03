@@ -65,17 +65,6 @@ export async function createRouter(
       await artifactsApi.getContainerRepositories(compartmentName, tenancyName, profile)
     )
   });
-    
-  router.get('/artifacts/container/repository', async(request, response) => {
-    logger.info(`Getting container images list in a repository`);
-    const tenancyName = request.query.tenancyName as string;
-    const profile = request.query.profile as string;
-    const compartmentName = request.query.compartmentName as string;
-    const repositoryName = request.query.repositoryName as string;
-    response.status(200).json(
-      await artifactsApi.getContainerImagesInRepository(compartmentName, repositoryName, tenancyName, profile)
-    )
-  });
 
   router.post('/artifacts/container/repository', async(request, response) => {
     logger.info(`Create container repository in a compartment`);
@@ -85,6 +74,17 @@ export async function createRouter(
     const repositoryName = request.query.repositoryName as string;
     response.status(200).json(
       await artifactsApi.createContainerRepository(compartmentName, repositoryName, tenancyName, profile)
+    )
+  });
+    
+  router.get('/artifacts/container/repository/images', async(request, response) => {
+    logger.info(`Getting container images list in a repository`);
+    const tenancyName = request.query.tenancyName as string;
+    const profile = request.query.profile as string;
+    const compartmentName = request.query.compartmentName as string;
+    const repositoryName = request.query.repositoryName as string;
+    response.status(200).json(
+      await artifactsApi.getContainerImagesInRepository(compartmentName, repositoryName, tenancyName, profile)
     )
   });
 
