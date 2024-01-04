@@ -124,11 +124,13 @@ const overviewContent = (
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>
-    {/* Add this entity switch to add the Start and List Codespace card   */}
+    {/* Add this entity switch to add the Start and List Codespace card.
+    You can set enableStart as 'true' to show the Start Codespace button.
+    If left unset or set as 'false', the Start Codespace button will be unavailable.   */}
     <EntitySwitch>
       <EntitySwitch.Case if={e => Boolean(isGithubCodespacesAvailable(e))}>
         <Grid item md={6} xs={12}>
-          <EntityGithubCodespacesCard />
+          <EntityGithubCodespacesCard enableStart={true} />
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>
