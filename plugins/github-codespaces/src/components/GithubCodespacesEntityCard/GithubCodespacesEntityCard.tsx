@@ -47,9 +47,14 @@ const useStyles = makeStyles({
  * A Backstage Overview Card to create/start and list the Codespaces for the Authenticated User
  * dedicated for the particular entity (with the same display name) 
  * 
+ * @param enableStart - Enable/Disable 'Start Codespace' action button
+ * 
  * @public
  */
-export const GithubCodespacesEntityCard = () => {
+export const GithubCodespacesEntityCard = (props: {
+  enableStart?: boolean,
+}) => {
+  const { enableStart } = props;
   const { entity } = useEntity();
   const classes = useStyles();
   
@@ -70,7 +75,7 @@ export const GithubCodespacesEntityCard = () => {
         subheader="Start Codespace (dedicated for the component)"
         action={
           <>
-            <IconButton
+            { enableStart && (<IconButton
               aria-label="Start"
               title="Start Codespace"
               onClick={() => startCodespace().then((result) => {
@@ -78,7 +83,7 @@ export const GithubCodespacesEntityCard = () => {
               })}
             >
               <PlayCircleOutlineIcon />
-            </IconButton>
+            </IconButton>)}
           </>
         }
       />
