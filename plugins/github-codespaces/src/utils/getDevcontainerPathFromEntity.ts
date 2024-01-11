@@ -17,15 +17,15 @@
 import { Entity } from "@backstage/catalog-model";
 
 /**
- * Annotation required for the Github Codespaces
+ * (Optional) Annotation for the Github Codespaces devcontainer path
  *  @public
  */
 export const GITHUB_CODESPACES_DEVCONTAINER_ANNOTATION = 'github.com/devcontainer-path';
 
 /**
- * Get the project name from the entity annotations
+ * Get the devcontainer path from the entity annotations
  * @param entity - Entity object
- * @returns the value of the project slug in the entity defintion annotations
+ * @returns the value of the devcontainer path in the entity defintion annotations
  */
 export const getDevcontainerPathFromEntity = (entity: Entity) => 
     entity?.metadata.annotations?.[GITHUB_CODESPACES_DEVCONTAINER_ANNOTATION] ?? '';
