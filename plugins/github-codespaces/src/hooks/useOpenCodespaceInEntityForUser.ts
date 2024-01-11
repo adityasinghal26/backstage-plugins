@@ -17,7 +17,7 @@
 import { Entity } from "@backstage/catalog-model";
 import { githubCodespacesApiRef } from "../api"; 
 import { useApi } from "@backstage/core-plugin-api";
-import { getProjectNameFromEntity } from "../utils";
+import { getDevcontainerPathFromEntity, getProjectNameFromEntity } from "../utils";
 import { useCallback } from "react";
 
 /**
@@ -44,6 +44,7 @@ export function useOpenCodespaceInEntityForUser(
         // Get the repository owner and name from the project-slug
         // and filter the codespaces for the Authenticated User
         const projectName = getProjectNameFromEntity(entity);
+        const devcontainerPath = getDevcontainerPathFromEntity(entity);
         const [owner, repositoryName] = (projectName ?? '/').split('/');
         const codespacesListInRepo = await api.listCodespacesInRepoForUser(owner, repositoryName); 
 
@@ -65,7 +66,7 @@ export function useOpenCodespaceInEntityForUser(
         // else start the top most existing codespace 
         return (
             (count === 0) ?
-            ((await api.createCodespaceInEntityForUser(entityName,owner,repositoryName))) :
+            ((await api.createCodespaceInEntityForUser(entityName,owner,repositoryName,devcontainerPath))) :
             api.startCodespaceForUser(verifiedCodespaces[0].name)
         );
     },[api, entity])
