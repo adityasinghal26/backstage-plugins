@@ -1,5 +1,11 @@
 # @adityasinghal26/plugin-github-codespaces
 
+## 1.0.2
+
+### Patch Changes
+
+- add enableStart to enable/disable 'Start Codespaces' on Overview card
+
 ## 1.0.1
 
 ### Patch Changes
