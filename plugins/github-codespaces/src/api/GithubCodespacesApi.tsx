@@ -78,9 +78,10 @@ export type GithubCodespacesApi = {
      * @param displayName - Display Name for the codespace
      * @param owner - Organisation or user name for the repository
      * @param repositoryName - Name of the repository
+     * @param devcontainerPath - Path to use for Codespace devcontainer
      * @returns details of the codespace to start
      */
-    createCodespaceInEntityForUser: (displayName: string, owner: string, repositoryName: string) =>
+    createCodespaceInEntityForUser: (displayName: string, owner: string, repositoryName: string, devcontainerPath?: string) =>
         Promise<
             RestEndpointMethodTypes['codespaces']['createWithRepoForAuthenticatedUser']['response']['data']
         > 
