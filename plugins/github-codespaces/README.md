@@ -60,6 +60,9 @@ Website: [https://github.com/codespaces](https://github.com/codespaces)
      description: backstage.io
      annotations:
        github.com/project-slug: 'backstage/backstage'
+       # Add below annotation for a custom devcontainer configuration with
+       # relative path of devcontainer.json file from root of the repository
+       github.com/devcontainer-path: .devcontainer/devcontainer.json 
    spec:
      type: website
      lifecycle: production
