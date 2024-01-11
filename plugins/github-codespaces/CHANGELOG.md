@@ -1,5 +1,11 @@
 # @adityasinghal26/plugin-github-codespaces
 
+## 1.0.3
+
+### Patch Changes
+
+- - Create GitHub Codespaces instance with custom devcontainer configuration
+
 ## 1.0.2
 
 ### Patch Changes
