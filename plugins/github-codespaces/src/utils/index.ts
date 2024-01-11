@@ -15,6 +15,7 @@
  */
 
 export * from './getProjectNameFromEntity';
+export * from './getDevcontainerPathFromEntity';
 export * from './getBooleanIndicator';
 export * from './getCodespaceState';
 export * from './getGitStatusView';
