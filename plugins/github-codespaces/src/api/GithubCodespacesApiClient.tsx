@@ -108,4 +108,10 @@ export class GithubCodespacesApiClient implements GithubCodespacesApi {
         return response.data
     }
 
+    async stopCodespaceForUser(name: string): Promise<void> {
+        const octokit = await this.getOctokit('github.com')
+        await octokit.rest.codespaces.stopForAuthenticatedUser({
+            codespace_name: name,
+        })
+    }
 };

@@ -84,6 +84,13 @@ export type GithubCodespacesApi = {
     createCodespaceInEntityForUser: (displayName: string, owner: string, repositoryName: string, devcontainerPath?: string) =>
         Promise<
             RestEndpointMethodTypes['codespaces']['createWithRepoForAuthenticatedUser']['response']['data']
-        > 
+        >
+
+    /**
+     * Stop a particular running Codespace instance
+     * @param name - Name for the codespace
+     * @returns void
+     */
+    stopCodespaceForUser: (name: string) => Promise<void>
 
 };
