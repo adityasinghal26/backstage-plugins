@@ -21,6 +21,7 @@ import { Box } from "@material-ui/core";
 import { Codespace } from "../../api";
 import { booleanIndicator, codespaceState } from "../../utils";
 import { DateTime } from "luxon";
+import { DetailsDrawerComponent } from "../GithubCodespacesDetailsDrawer";
 
 /**
  * Create an array of columns with following details
@@ -36,6 +37,9 @@ const columns: TableColumn[] = [
         title: 'Codespace',
         field: 'name',
         width: 'auto',
+        highlight: true,
+        render: (row: Partial<Codespace>): React.ReactNode => 
+            DetailsDrawerComponent(row),
     },
     {
         title: 'Repository',
