@@ -1,5 +1,11 @@
 # @adityasinghal26/plugin-github-codespaces
 
+## 1.0.4
+
+### Patch Changes
+
+- Upgrading backstage packages and deps to 1.23.4 and related
+
 ## 1.0.3
 
 ### Patch Changes
