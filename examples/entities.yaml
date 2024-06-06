@@ -12,6 +12,9 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: example-website
+  annotations:
+    github.com/project-slug: adityasinghal26/backstage-playground
+    github.com/devcontainer-path: .devcontainer/devcontainer.json
 spec:
   type: website
   lifecycle: experimental

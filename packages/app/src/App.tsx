@@ -34,6 +34,7 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 import { GithubCodespacesPage } from '@adityasinghal26/plugin-github-codespaces';
+import { AzureBoardsPage } from '@adityasinghal26/backstage-plugin-azure-boards';
 
 const app = createApp({
   apis,
@@ -95,6 +96,7 @@ const routes = (
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
     <Route path="/github-codespaces" element={<GithubCodespacesPage />} />
+    <Route path="/azure-boards" element={<AzureBoardsPage />} />
   </FlatRoutes>
 );
 

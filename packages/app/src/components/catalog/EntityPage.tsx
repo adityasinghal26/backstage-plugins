@@ -57,6 +57,7 @@ import {
 
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
+import { EntityGithubCodespacesCard, isGithubCodespacesAvailable, EntityGithubCodespacesContent, EntityGithubCodespacesRepoContent } from '@adityasinghal26/plugin-github-codespaces';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -65,6 +66,30 @@ const techdocsContent = (
     </TechDocsAddons>
   </EntityTechdocsContent>
 );
+
+const codespacesContent = (
+  <>
+    {/* Add this entity switch to view the list 
+    of codespaces filtered with entity name */}
+    <EntitySwitch>
+      <EntitySwitch.Case if={isGithubCodespacesAvailable}>
+        <Grid item xs={12}>
+          <EntityGithubCodespacesContent />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
+    {/* Add this entity switch to view the list 
+    of codespaces filtered with repository */}
+    <EntitySwitch>
+      <EntitySwitch.Case if={isGithubCodespacesAvailable}>
+        <Grid item xs={12}>
+          <EntityGithubCodespacesRepoContent />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
+  </>
+);
+
 
 const cicdContent = (
   // This is an example of how you can implement your company's logic in entity page.
@@ -131,6 +156,10 @@ const overviewContent = (
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
 
+    <Grid item md={6} xs={12}>
+      <EntityGithubCodespacesCard enableStart />
+    </Grid>
+
     <Grid item md={4} xs={12}>
       <EntityLinksCard />
     </Grid>
@@ -182,6 +211,13 @@ const websiteEntityPage = (
   <EntityLayout>
     <EntityLayout.Route path="/" title="Overview">
       {overviewContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route 
+        if={isGithubCodespacesAvailable} 
+        path="/github-codespaces" 
+        title="GitHub Codespaces">
+      {codespacesContent}
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
