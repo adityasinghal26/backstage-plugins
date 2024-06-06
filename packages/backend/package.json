@@ -16,6 +16,7 @@
     "build-image": "docker build ../.. -f Dockerfile --tag backstage"
   },
   "dependencies": {
+    "@adityasinghal26/backstage-plugin-oracle-cloud-backend": "^0.1.0",
     "@backstage/backend-common": "^0.22.0",
     "@backstage/backend-tasks": "^0.5.23",
     "@backstage/catalog-client": "^1.6.5",
