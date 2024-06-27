@@ -15,11 +15,11 @@
  */
 
 import { Config } from "@backstage/config";
-import { Logger } from "winston";
 import * as artifacts from "oci-artifacts";
 import { OracleCloudApi, OracleConfig } from "./OracleCloudApi";
 import { CreateContainerRepositoryResponse, ListContainerImagesResponse, ListContainerRepositoriesResponse } from "oci-artifacts/lib/response";
 import { IdentityApi } from "./IdentityApi";
+import { LoggerService } from "@backstage/backend-plugin-api";
 
 /**
  * Provides Oracle Cloud API endpoint for Artifacts services
@@ -30,7 +30,7 @@ export class ArtifactsApi extends OracleCloudApi {
     private readonly identityApi: IdentityApi;
 
     private constructor(
-        logger: Logger,
+        logger: LoggerService,
         config: Config,
         tenancyList: OracleConfig[],
         identityApi: IdentityApi,
@@ -47,7 +47,7 @@ export class ArtifactsApi extends OracleCloudApi {
      */
     static fromConfig(
         config: Config,
-        options: { logger: Logger }
+        options: { logger: LoggerService }
     ) {
         const { logger } = options;
         const tenancyList: OracleConfig[] = ArtifactsApi.fromConfiguration(config, options).tenancyList;

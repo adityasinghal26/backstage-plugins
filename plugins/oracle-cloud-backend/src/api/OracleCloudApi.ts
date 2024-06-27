@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import { Logger } from "winston";
 import * as common from "oci-common";
 import { Config } from "@backstage/config";
+import { LoggerService } from "@backstage/backend-plugin-api";
 
 /**
  * Information about an Oracle Cloud tenancy.
@@ -49,12 +49,12 @@ export class OracleCloudApi {
      * @param tenancyList - List of Oracle Cloud tenancies configuration from config file
      * 
      */
-    protected readonly logger: Logger;
+    protected readonly logger: LoggerService;
     protected readonly config: Config;
     public readonly tenancyList: OracleConfig[];
 
     protected constructor(
-        logger: Logger,
+        logger: LoggerService,
         config: Config,
         tenancyList: OracleConfig[],
     ) {
@@ -71,7 +71,7 @@ export class OracleCloudApi {
      */
     static fromConfiguration(
         config: Config,
-        options: { logger: Logger }
+        options: { logger: LoggerService }
     ) {
         const { logger } = options;
         const DEFAULT_ORACLE_TENANCY_NAME = 'default';

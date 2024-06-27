@@ -15,10 +15,10 @@
  */
 
 import { Config } from "@backstage/config";
-import { Logger } from "winston";
 import * as identity from "oci-identity";
 import { OracleCloudApi, OracleConfig } from "./OracleCloudApi";
 import { GetCompartmentResponse, GetTenancyResponse, ListCompartmentsResponse } from "oci-identity/lib/response";
+import { LoggerService } from "@backstage/backend-plugin-api";
 
 /**
  * Provides Oracle Cloud API endpoint for Identity services
@@ -34,7 +34,7 @@ export class IdentityApi extends OracleCloudApi {
      */
     static fromConfig(
         config: Config,
-        options: { logger: Logger }
+        options: { logger: LoggerService }
     ) {
         const { logger } = options;
         const tenancyList: OracleConfig[] = IdentityApi.fromConfiguration(config, options).tenancyList;
