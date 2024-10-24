@@ -1,4 +1,10 @@
-import { configApiRef, createApiFactory, createPlugin, createRoutableExtension, githubAuthApiRef } from '@backstage/core-plugin-api';
+import {
+  configApiRef,
+  createApiFactory,
+  createPlugin,
+  createRoutableExtension,
+  githubAuthApiRef,
+} from '@backstage/core-plugin-api';
 
 import { rootRouteRef } from './routes';
 import { githubCodespacesApiRef, GithubCodespacesApiClient } from './api';
@@ -8,9 +14,10 @@ export const githubCodespacesPlugin = createPlugin({
   apis: [
     createApiFactory({
       api: githubCodespacesApiRef,
-      deps: { configApi: configApiRef , githubAuthApi: githubAuthApiRef },
-      factory: ({ configApi, githubAuthApi }) => new GithubCodespacesApiClient({configApi, githubAuthApi})
-    })
+      deps: { configApi: configApiRef, githubAuthApi: githubAuthApiRef },
+      factory: ({ configApi, githubAuthApi }) =>
+        new GithubCodespacesApiClient({ configApi, githubAuthApi }),
+    }),
   ],
   routes: {
     root: rootRouteRef,
@@ -21,7 +28,9 @@ export const GithubCodespacesPage = githubCodespacesPlugin.provide(
   createRoutableExtension({
     name: 'GithubCodespacesPage',
     component: () =>
-      import('./components/GithubCodespacesPage').then(m => m.GithubCodespacesPage),
+      import('./components/GithubCodespacesPage').then(
+        m => m.GithubCodespacesPage,
+      ),
     mountPoint: rootRouteRef,
   }),
 );
@@ -29,8 +38,10 @@ export const GithubCodespacesPage = githubCodespacesPlugin.provide(
 export const EntityGithubCodespacesContent = githubCodespacesPlugin.provide(
   createRoutableExtension({
     name: 'EntityGithubCodespacesContent',
-    component: () => 
-      import('./components/GithubCodespacesEntityContent').then(m => m.GithubCodespaceEntityContent),
+    component: () =>
+      import('./components/GithubCodespacesEntityContent').then(
+        m => m.GithubCodespaceEntityContent,
+      ),
     mountPoint: rootRouteRef,
   }),
 );
@@ -38,8 +49,10 @@ export const EntityGithubCodespacesContent = githubCodespacesPlugin.provide(
 export const EntityGithubCodespacesRepoContent = githubCodespacesPlugin.provide(
   createRoutableExtension({
     name: 'EntityGithubCodespacesRepoContent',
-    component: () => 
-      import('./components/GithubCodespacesEntityContent').then(m => m.GithubCodespaceEntityRepoContent),
+    component: () =>
+      import('./components/GithubCodespacesEntityContent').then(
+        m => m.GithubCodespaceEntityRepoContent,
+      ),
     mountPoint: rootRouteRef,
   }),
 );
@@ -47,8 +60,10 @@ export const EntityGithubCodespacesRepoContent = githubCodespacesPlugin.provide(
 export const GithubCodespacesPageList = githubCodespacesPlugin.provide(
   createRoutableExtension({
     name: 'GithubCodespacesPageList',
-    component: () => 
-      import('./components/GithubCodespacesPage').then(m => m.GithubCodespacesPageComponent),
+    component: () =>
+      import('./components/GithubCodespacesPage').then(
+        m => m.GithubCodespacesPageComponent,
+      ),
     mountPoint: rootRouteRef,
   }),
 );
@@ -56,17 +71,21 @@ export const GithubCodespacesPageList = githubCodespacesPlugin.provide(
 export const EntityGithubCodespacesCard = githubCodespacesPlugin.provide(
   createRoutableExtension({
     name: 'EntityGithubCodespacesCard',
-    component: () => 
-      import('./components/GithubCodespacesEntityCard').then(m => m.GithubCodespacesEntityCard),
+    component: () =>
+      import('./components/GithubCodespacesEntityCard').then(
+        m => m.GithubCodespacesEntityCard,
+      ),
     mountPoint: rootRouteRef,
-  })
-)
+  }),
+);
 
 export const EntityGithubCodespacesWidget = githubCodespacesPlugin.provide(
   createRoutableExtension({
     name: 'EntityGithubCodespacesWidget',
-    component: () => 
-      import('./components/GithubCodespacesEntityCard').then(m => m.GithubCodespacesWidgetCard),
+    component: () =>
+      import('./components/GithubCodespacesEntityCard').then(
+        m => m.GithubCodespacesWidgetCard,
+      ),
     mountPoint: rootRouteRef,
-  })
-)
+  }),
+);

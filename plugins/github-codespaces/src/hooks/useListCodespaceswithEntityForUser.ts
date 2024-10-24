@@ -14,54 +14,55 @@
  * limitations under the License.
  */
 
-import { Entity } from "@backstage/catalog-model";
-import { githubCodespacesApiRef } from "../api"; 
-import { useApi } from "@backstage/core-plugin-api";
-import { RestEndpointMethodTypes } from "@octokit/rest";
-import useAsync from "react-use/lib/useAsync";
-import { getProjectNameFromEntity } from "../utils";
+import { Entity } from '@backstage/catalog-model';
+import { githubCodespacesApiRef } from '../api';
+import { useApi } from '@backstage/core-plugin-api';
+import { RestEndpointMethodTypes } from '@octokit/rest';
+import useAsync from 'react-use/lib/useAsync';
+import { getProjectNameFromEntity } from '../utils';
 
 /**
  * React hook to list all the codespaces for the Authenticated User
  * belonging to the repository configured in the entity annotations
  * and with the entity name as a substring of the Codespace display name
- * 
+ *
  * @returns the list and details of all the codespaces
  */
-export function useListCodespaceswithEntityForUser(
-    entity: Entity,
-): {
-    count?: RestEndpointMethodTypes['codespaces']['listInRepositoryForAuthenticatedUser']['response']['data']['total_count'];
-    data?: RestEndpointMethodTypes['codespaces']['listInRepositoryForAuthenticatedUser']['response']['data']['codespaces'];
-    loading: boolean;
-    error?: Error;
+export function useListCodespaceswithEntityForUser(entity: Entity): {
+  count?: RestEndpointMethodTypes['codespaces']['listInRepositoryForAuthenticatedUser']['response']['data']['total_count'];
+  data?: RestEndpointMethodTypes['codespaces']['listInRepositoryForAuthenticatedUser']['response']['data']['codespaces'];
+  loading: boolean;
+  error?: Error;
 } {
-    const api = useApi(githubCodespacesApiRef);
-    const entity_name = entity.metadata.name;
+  const api = useApi(githubCodespacesApiRef);
+  const entity_name = entity.metadata.name;
 
-    // Get the repository owner and name from the project-slug
-    // and filter the codespaces for the Authenticated User
-    const { value, loading, error } = useAsync(() => {
-        const projectName = getProjectNameFromEntity(entity);
-        const [owner, repository_name] = (projectName ?? '/').split('/');
-        return api.listCodespacesInRepoForUser(owner, repository_name);
-    }, [api]);
+  // Get the repository owner and name from the project-slug
+  // and filter the codespaces for the Authenticated User
+  const { value, loading, error } = useAsync(() => {
+    const projectName = getProjectNameFromEntity(entity);
+    const [owner, repository_name] = (projectName ?? '/').split('/');
+    return api.listCodespacesInRepoForUser(owner, repository_name);
+  }, [api]);
 
-    // Verify whether the codespace list contains
-    // any codespace which has a substring with entity name
-    const verifyCodespaceNameWithEntity = (entityName: string, codespaceName: any) => {
-        return (codespaceName.toLowerCase().indexOf(entityName.toLowerCase()) >= 0);
-    }
+  // Verify whether the codespace list contains
+  // any codespace which has a substring with entity name
+  const verifyCodespaceNameWithEntity = (
+    entityName: string,
+    codespaceName: any,
+  ) => {
+    return codespaceName.toLowerCase().indexOf(entityName.toLowerCase()) >= 0;
+  };
 
-    // Create a list of codespaces filtered for the entity name and repository
-    const verifiedCodespaces = value?.codespaces.filter((codespace) =>
-        verifyCodespaceNameWithEntity(entity_name, codespace.display_name)
-    )
+  // Create a list of codespaces filtered for the entity name and repository
+  const verifiedCodespaces = value?.codespaces.filter(codespace =>
+    verifyCodespaceNameWithEntity(entity_name, codespace.display_name),
+  );
 
-    return {
-        count: verifiedCodespaces?.length,
-        data: verifiedCodespaces,
-        loading,
-        error,
-    };
+  return {
+    count: verifiedCodespaces?.length,
+    data: verifiedCodespaces,
+    loading,
+    error,
+  };
 }

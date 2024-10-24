@@ -80,7 +80,11 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         <SidebarDivider />
         <SidebarScrollWrapper>
           {/* Items in this group will be scrollable if they run out of space */}
-          <SidebarItem icon={GitHubIcon} to="github-codespaces" text="GitHub Codespaces" />
+          <SidebarItem
+            icon={GitHubIcon}
+            to="github-codespaces"
+            text="GitHub Codespaces"
+          />
         </SidebarScrollWrapper>
       </SidebarGroup>
       <SidebarSpace />

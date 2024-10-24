@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-import React from "react";
-import { useEntity } from "@backstage/plugin-catalog-react";
+import React from 'react';
+import { useEntity } from '@backstage/plugin-catalog-react';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
-import { Card, CardHeader, IconButton, makeStyles } from "@material-ui/core";
-import { useOpenCodespaceInEntityForUser } from "../../hooks/useOpenCodespaceInEntityForUser";
+import { Card, CardHeader, IconButton, makeStyles } from '@material-ui/core';
+import { useOpenCodespaceInEntityForUser } from '../../hooks/useOpenCodespaceInEntityForUser';
 
 const useStyles = makeStyles({
   gridItemCard: {
@@ -40,25 +40,24 @@ const useStyles = makeStyles({
   },
 });
 
-
 /**
  * A Backstage Widget card to create/start the Codespaces for the Authenticated User
- * filtered for the particular entity (with the same display name) 
- * 
+ * filtered for the particular entity (with the same display name)
+ *
  * @public
  */
 export const GithubCodespacesWidgetCard = () => {
   const { entity } = useEntity();
   const classes = useStyles();
-  
+
   // React callback function to open the entity in Github Codespace
   const { startCodespace } = useOpenCodespaceInEntityForUser(entity);
 
   // method to open the URL in a new tab
   const openInNewTab = (url: string) => {
-    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
-    if (newWindow) newWindow.opener = null
-  }
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+    if (newWindow) newWindow.opener = null;
+  };
 
   return (
     <Card className={classes.gridItemCard}>
@@ -70,9 +69,11 @@ export const GithubCodespacesWidgetCard = () => {
             <IconButton
               aria-label="Start"
               title="Start Codespace"
-              onClick={() => startCodespace().then((result) => {
-                return openInNewTab(result.web_url);
-              })}
+              onClick={() =>
+                startCodespace().then(result => {
+                  return openInNewTab(result.web_url);
+                })
+              }
             >
               <PlayCircleOutlineIcon />
             </IconButton>
@@ -81,4 +82,4 @@ export const GithubCodespacesWidgetCard = () => {
       />
     </Card>
   );
-}
+};
