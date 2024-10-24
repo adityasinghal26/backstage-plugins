@@ -14,34 +14,34 @@
  * limitations under the License.
  */
 
-import { githubCodespacesApiRef } from "../api"; 
-import { useApi } from "@backstage/core-plugin-api";
-import { RestEndpointMethodTypes } from "@octokit/rest";
-import useAsync from "react-use/lib/useAsync";
+import { githubCodespacesApiRef } from '../api';
+import { useApi } from '@backstage/core-plugin-api';
+import { RestEndpointMethodTypes } from '@octokit/rest';
+import useAsync from 'react-use/lib/useAsync';
 
 /**
  * React hook to list all the codespaces for the Authenticated User
- * 
+ *
  * @returns the list and details of all the codespaces
  */
 export function useListCodespacesForUser(): {
-    count?: RestEndpointMethodTypes['codespaces']['listForAuthenticatedUser']['response']['data']['total_count'];
-    data?: RestEndpointMethodTypes['codespaces']['listForAuthenticatedUser']['response']['data']['codespaces'];
-    loading: boolean;
-    error?: Error;
+  count?: RestEndpointMethodTypes['codespaces']['listForAuthenticatedUser']['response']['data']['total_count'];
+  data?: RestEndpointMethodTypes['codespaces']['listForAuthenticatedUser']['response']['data']['codespaces'];
+  loading: boolean;
+  error?: Error;
 } {
-    const api = useApi(githubCodespacesApiRef);
+  const api = useApi(githubCodespacesApiRef);
 
-    // trigger an async API call to get the list of codespaces
-    // for the authenticated user
-    const { value, loading, error } = useAsync(() => {
-            return api.listCodespacesForUser();
-    }, [api]);
+  // trigger an async API call to get the list of codespaces
+  // for the authenticated user
+  const { value, loading, error } = useAsync(() => {
+    return api.listCodespacesForUser();
+  }, [api]);
 
-    return {
-        count: value?.total_count,
-        data: value?.codespaces,
-        loading,
-        error,
-    };
+  return {
+    count: value?.total_count,
+    data: value?.codespaces,
+    loading,
+    error,
+  };
 }

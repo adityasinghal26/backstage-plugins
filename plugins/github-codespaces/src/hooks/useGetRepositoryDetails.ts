@@ -14,7 +14,7 @@
 //  * limitations under the License.
 //  */
 
-// import { githubCodespacesApiRef } from "../api"; 
+// import { githubCodespacesApiRef } from "../api";
 // import { Entity } from "@backstage/catalog-model";
 // import { useApi } from "@backstage/core-plugin-api";
 // import { RestEndpointMethodTypes } from "@octokit/rest";

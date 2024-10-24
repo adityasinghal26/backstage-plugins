@@ -14,9 +14,16 @@
  * limitations under the License.
  */
 
-import { StatusAborted, StatusError, StatusOK, StatusPending, StatusRunning, StatusWarning } from "@backstage/core-components";
-import React from "react";
-import { CodespaceState } from "../api";
+import {
+  StatusAborted,
+  StatusError,
+  StatusOK,
+  StatusPending,
+  StatusRunning,
+  StatusWarning,
+} from '@backstage/core-components';
+import React from 'react';
+import { CodespaceState } from '../api';
 
 /**
  * Method to create an indicator that gives -
@@ -24,9 +31,7 @@ import { CodespaceState } from "../api";
  * @param props - Properties with the Codespace state
  * @returns a dot icon with the Codespace state text
  */
-export const codespaceState = (props: {
-  status?: CodespaceState;
-}) => {
+export const codespaceState = (props: { status?: CodespaceState }) => {
   return (
     <>
       <StateIcon {...props} />
@@ -37,14 +42,10 @@ export const codespaceState = (props: {
 
 /**
  * Gives a dot icon on different Codespace states
- * @param status for Codespace state  
+ * @param status for Codespace state
  * @returns a colored indicator for the state
  */
-export function StateIcon({
-  status,
-}: {
-  status?: CodespaceState;
-}) {
+export function StateIcon({ status }: { status?: CodespaceState }) {
   if (status === undefined) return null;
   switch (status) {
     case CodespaceState.Unknown:
@@ -104,15 +105,11 @@ export function StateIcon({
 }
 
 /**
-   * Gives the text output on different Codespace state
-   * @param status for Codespace state 
-   * @returns a text with the Codespace state
-   */
-export function getStateDescription({
-  status,
-}: {
-  status?: CodespaceState;
-}) {
+ * Gives the text output on different Codespace state
+ * @param status for Codespace state
+ * @returns a text with the Codespace state
+ */
+export function getStateDescription({ status }: { status?: CodespaceState }) {
   if (status === undefined) return null;
   switch (status) {
     case CodespaceState.Unknown:
@@ -169,5 +166,4 @@ export function getStateDescription({
     default:
       return 'Pending';
   }
-
 }

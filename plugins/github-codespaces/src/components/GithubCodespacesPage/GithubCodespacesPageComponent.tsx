@@ -14,18 +14,24 @@
  * limitations under the License.
  */
 
-import { useListCodespacesForUser } from "../../hooks";
-import { GithubCodespacePageTable } from "./GithubCodespacesPageTable";
-import React from "react";
+import { useListCodespacesForUser } from '../../hooks';
+import { GithubCodespacePageTable } from './GithubCodespacesPageTable';
+import React from 'react';
 
 /**
  * A Backstage Component to list the Codespaces for the Authenticated User
- * 
+ *
  * @public
- */ 
+ */
 export const GithubCodespacesPageComponent = () => {
+  const { count, data, loading, error } = useListCodespacesForUser();
 
-    const { count, data, loading, error } = useListCodespacesForUser();
-
-    return <GithubCodespacePageTable count={count} list={data} loading={loading} error={error} />;
-}
+  return (
+    <GithubCodespacePageTable
+      count={count}
+      list={data}
+      loading={loading}
+      error={error}
+    />
+  );
+};

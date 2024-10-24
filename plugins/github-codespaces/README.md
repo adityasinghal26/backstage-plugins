@@ -1,8 +1,8 @@
 # GitHub Codespaces Plugin
 
-Interact with your GitHub Codespaces directly from Backstage platform. 
+Interact with your GitHub Codespaces directly from Backstage platform.
 
-GitHub Codespaces enable you to create a Devcontainer from your GitHub repository and get in Development mode right away. For more documentation, visit below documentation. You can also view your codespaces by following the website link below after logging in to GitHub.  
+GitHub Codespaces enable you to create a Devcontainer from your GitHub repository and get in Development mode right away. For more documentation, visit below documentation. You can also view your codespaces by following the website link below after logging in to GitHub.
 
 Documentation: [https://docs.github.com/en/codespaces](https://docs.github.com/en/codespaces)
 
@@ -23,7 +23,7 @@ Website: [https://github.com/codespaces](https://github.com/codespaces)
 
 ![GitHub Codespaces](./images/GithubCodespacesPage.png)
 
-2. Start Codespaces Widget 
+2. Start Codespaces Widget
 
 ![Start Codespaces](./images/EntityGithubCodespacesWidget.png)
 
@@ -62,7 +62,7 @@ Website: [https://github.com/codespaces](https://github.com/codespaces)
        github.com/project-slug: 'backstage/backstage'
        # Add below annotation for a custom devcontainer configuration with
        # relative path of devcontainer.json file from root of the repository
-       github.com/devcontainer-path: .devcontainer/devcontainer.json 
+       github.com/devcontainer-path: .devcontainer/devcontainer.json
    spec:
      type: website
      lifecycle: production
@@ -93,7 +93,7 @@ import {
 // Create the codespaces tab content for Github Codespaces
 const codespacesContent = (
   <>
-    {/* Add this entity switch to view the list 
+    {/* Add this entity switch to view the list
     of codespaces filtered with entity name */}
     <EntitySwitch>
       <EntitySwitch.Case if={isGithubCodespacesAvailable}>
@@ -102,7 +102,7 @@ const codespacesContent = (
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>
-    {/* Add this entity switch to view the list 
+    {/* Add this entity switch to view the list
     of codespaces filtered with repository */}
     <EntitySwitch>
       <EntitySwitch.Case if={isGithubCodespacesAvailable}>
@@ -145,9 +145,9 @@ const overviewContent = (
 const serviceEntityPage = (
   <EntityLayout>
     {/* other tabs... */}
-    <EntityLayout.Route 
-        if={isGithubCodespacesAvailable} 
-        path="/github-codespaces" 
+    <EntityLayout.Route
+        if={isGithubCodespacesAvailable}
+        path="/github-codespaces"
         title="GitHub Codespaces">
       {codespacesContent}
     </EntityLayout.Route>
@@ -163,15 +163,14 @@ Make sure that the required package is installed as in above section step #1.
 1. Add to the app `App.tsx` component:
 
 ```tsx
-
 // In packages/app/src/App.tsx
 import { GithubCodespacesPage } from '@adityasinghal26/plugin-github-codespaces';
 
 // Add the route to the App path routes
 const routes = (
   <FlatRoutes>
-  {/* other routes here */}
-      <Route path="/github-codespaces" element={<GithubCodespacesPage />} />
+    {/* other routes here */}
+    <Route path="/github-codespaces" element={<GithubCodespacesPage />} />
   </FlatRoutes>
 );
 ```
@@ -179,7 +178,6 @@ const routes = (
 2. Add to the app `Root.tsx` component:
 
 ```tsx
-
 // In packages/app/src/components/Root/App.tsx
 import { GitHubIcon } from '@backstage/core-components';
 import { GithubCodespacesPage } from '@adityasinghal26/plugin-github-codespaces';
@@ -188,16 +186,15 @@ import { GithubCodespacesPage } from '@adityasinghal26/plugin-github-codespaces'
 export const Root = ({ children }: PropsWithChildren<{}>) => (
   <SidebarPage>
     <Sidebar>
-    {/* other sidebar items here */}
-    {/* add inside "Menu" SidebarGroup */}
+      {/* other sidebar items here */}
+      {/* add inside "Menu" SidebarGroup */}
       <SidebarItem icon={GitHubIcon} to="github-codespaces" text="Codespaces" />
-    {/* other sidebar items here */}
+      {/* other sidebar items here */}
     </Sidebar>
     {children}
   </SidebarPage>
 );
 ```
-
 
 <!-- ### Self-hosted / Enterprise GitHub
 
@@ -212,7 +209,7 @@ annotations to figure out the location of the source code.
 integrations:
   github:
     - host: 'your-github-host.com'
-      apiBaseUrl: 'https://api.your-github-host.com' 
+      apiBaseUrl: 'https://api.your-github-host.com'
 ```-->
 
 ## Limitations

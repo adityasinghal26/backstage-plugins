@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { Entity } from "@backstage/catalog-model";
-import { GITHUB_CODESPACES_ANNOTATION } from "./getProjectNameFromEntity";
+import { Entity } from '@backstage/catalog-model';
+import { GITHUB_CODESPACES_ANNOTATION } from './getProjectNameFromEntity';
 
 /**
  * Check whether the Github Codespace annotation exists in the entity annotations

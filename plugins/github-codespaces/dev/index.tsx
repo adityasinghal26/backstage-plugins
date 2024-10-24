@@ -7,6 +7,6 @@ createDevApp()
   .addPage({
     element: <GithubCodespacesPage />,
     title: 'Root Page',
-    path: '/github-codespaces'
+    path: '/github-codespaces',
   })
   .render();

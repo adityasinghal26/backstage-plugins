@@ -14,18 +14,20 @@
  * limitations under the License.
  */
 
-import { Entity } from "@backstage/catalog-model";
+import { Entity } from '@backstage/catalog-model';
 
 /**
  * (Optional) Annotation for the Github Codespaces devcontainer path
  *  @public
  */
-export const GITHUB_CODESPACES_DEVCONTAINER_ANNOTATION = 'github.com/devcontainer-path';
+export const GITHUB_CODESPACES_DEVCONTAINER_ANNOTATION =
+  'github.com/devcontainer-path';
 
 /**
  * Get the devcontainer path from the entity annotations
  * @param entity - Entity object
  * @returns the value of the devcontainer path in the entity defintion annotations
  */
-export const getDevcontainerPathFromEntity = (entity: Entity) => 
-    entity?.metadata.annotations?.[GITHUB_CODESPACES_DEVCONTAINER_ANNOTATION] ?? '';
+export const getDevcontainerPathFromEntity = (entity: Entity) =>
+  entity?.metadata.annotations?.[GITHUB_CODESPACES_DEVCONTAINER_ANNOTATION] ??
+  '';
