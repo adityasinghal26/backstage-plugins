@@ -5,3 +5,10 @@
 This repository contains all plugins that are developed, maintained and managed by Kubin Kloud team.
 
 More information regarding the plugins can be found in Backstage [documentation](https://backstage.io/docs/plugins/).
+
+To start the app, run:
+
+```sh
+yarn install
+yarn dev
+```

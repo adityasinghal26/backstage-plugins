@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { StatusError, StatusOK } from "@backstage/core-components";
-import React from "react";
+import { StatusError, StatusOK } from '@backstage/core-components';
+import React from 'react';
 
 /**
  * Method to create an indicator that gives -
@@ -24,44 +24,33 @@ import React from "react";
  * @param props - Properties with the boolean status
  * @returns a green/red dot icon with the status text
  */
-export const booleanIndicator = (props: {
-    status?: boolean;
-}) => {
-    return (
-      <>
-        <BooleanIcon {...props} />
-        {getBooleanDescription(props)}
-      </>
-    );
-  };
+export const booleanIndicator = (props: { status?: boolean }) => {
+  return (
+    <>
+      <BooleanIcon {...props} />
+      {getBooleanDescription(props)}
+    </>
+  );
+};
 
 /**
  * Gives a dot icon on different boolean status
- * @param status for boolean status  
+ * @param status for boolean status
  * @returns a green/red indicator for the boolean
  */
-  export function BooleanIcon({
-    status,
-  }: {
-    status?: boolean;
-  }) {
-    if (status === undefined) return null;
-    if (status) return <StatusOK />;
-    return <StatusError />;
-  }
+export function BooleanIcon({ status }: { status?: boolean }) {
+  if (status === undefined) return null;
+  if (status) return <StatusOK />;
+  return <StatusError />;
+}
 
-  /**
-   * Gives the text output on different boolean status
-   * @param status for boolean status 
-   * @returns a True/False text for the boolean
-   */
-  export function getBooleanDescription({
-    status,
-  }: {
-    status?: boolean;
-  }) {
-    if (status === undefined) return null;
-    if (status) return 'True';
-    return 'False';
-  }
-  
+/**
+ * Gives the text output on different boolean status
+ * @param status for boolean status
+ * @returns a True/False text for the boolean
+ */
+export function getBooleanDescription({ status }: { status?: boolean }) {
+  if (status === undefined) return null;
+  if (status) return 'True';
+  return 'False';
+}
