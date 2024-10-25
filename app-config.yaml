@@ -67,6 +67,10 @@ auth:
   providers:
     # See https://backstage.io/docs/auth/guest/provider
     guest: {}
+    github:
+      development:
+        clientId: <github-oauth-client-id>
+        clientSecret: <github-oauth-client-secret>
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
