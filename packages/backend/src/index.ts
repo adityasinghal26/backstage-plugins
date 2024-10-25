@@ -52,4 +52,5 @@ backend.add(import('@backstage/plugin-search-backend-module-techdocs/alpha'));
 // kubernetes
 backend.add(import('@backstage/plugin-kubernetes-backend/alpha'));
 
+backend.add(import('@adityasinghal26/backstage-plugin-oracle-cloud-backend'));
 backend.start();
